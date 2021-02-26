@@ -5,7 +5,7 @@
         会員登録ありがとうございます。
       </div>
       <div class="buttonField">
-        <button class="resisterBUtton">登録</button>
+        <button class="resisterBUtton">ログインする</button>
       </div>
     </div>
   </div>
