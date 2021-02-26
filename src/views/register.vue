@@ -45,7 +45,7 @@
   padding: 15px;
   background-color: blue;
   color: white;
-  margin-bottom: 15px;
+  margin-bottom: 45px;
 }
 .nameField,
 .emailField,
