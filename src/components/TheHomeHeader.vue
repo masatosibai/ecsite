@@ -1,6 +1,14 @@
 <template>
   <div class="video_container">
-    <video class="videofield" src="../../static/Beer.mp4" loop autoplay>
+    <video
+      class="videofield"
+      src="../../static/Beer.mp4"
+      controls
+      muted
+      autoplay
+      playinline
+      loop
+    >
       <p>動画が再生さません</p>
     </video>
     <div id="restrant_eye_catch">
