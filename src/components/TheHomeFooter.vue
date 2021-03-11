@@ -2,19 +2,19 @@
   <div>
     <footer>
       <the-home-nav class="wedesign_restrant_menu" />
-      <div>
+      <!-- <div>
         <ul>
           <li>
-            <i class="fab fa-instagram fa-2x" />
+            <i class="fab fa-instagram " />
           </li>
           <li>
-            <i class="fab fa-twitter fa-2x" />
+            <i class="fab fa-twitter " />
           </li>
           <li>
-            <i class="fab fa-facebook-f fa-2x"></i>
+            <i class="fab fa-facebook-f " />
           </li>
         </ul>
-      </div>
+      </div> -->
     </footer>
   </div>
 </template>
@@ -43,6 +43,7 @@ ul li {
 }
 i {
   color: white;
+  font-size: 20px;
   cursor: pointer;
 }
 .wedesign_restrant_menu {

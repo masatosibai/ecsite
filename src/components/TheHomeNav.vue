@@ -32,7 +32,8 @@ export default {
 <style scoped>
 #menu {
   color: white;
-  font-size: 25px;
+  font-family: "Noto Serif JP", serif;
+  font-size: 18px;
 }
 a {
   text-decoration: none;
