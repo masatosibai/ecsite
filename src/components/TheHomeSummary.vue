@@ -7,7 +7,7 @@
       </div>
     </div>
     <div>
-      <p class="sans-serif">
+      <p class="serif">
         私たちは仕事終わりの最高の一杯を提供します。<br />
         最高の一杯とおいしい食事で一日の疲れを癒します。
       </p>
@@ -35,5 +35,11 @@ img {
   font-family: "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
   font-size: 30px;
+}
+.serif {
+  font-family: "Noto Serif JP", serif;
+  font-size: 30px;
+  line-height: 200%;
+  letter-spacing: 0.1em;
 }
 </style>

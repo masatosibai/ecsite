@@ -103,6 +103,7 @@ export default {
   margin-right: 15px;
   margin-bottom: 15px;
   border: 1px solid black;
+  background-color: white;
 }
 .thumbnailsImage {
   height: 150px;
@@ -111,12 +112,17 @@ export default {
 }
 .sotreName_Location_detailButton {
   text-align: left;
+  margin-top: 15px;
   margin-left: 15px;
   margin-bottom: 15px;
 }
 .storeName {
   font-size: 16px;
   font-weight: 600;
+  margin-bottom: 5px;
+}
+.storeLocation_category {
+  margin-bottom: 5px;
 }
 .detailBUtton {
   background-color: blue;

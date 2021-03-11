@@ -50,5 +50,6 @@ i {
   left: 0;
   bottom: 0;
   margin-right: 10px;
+  font-family: "Noto Serif JP", serif;
 }
 </style>
