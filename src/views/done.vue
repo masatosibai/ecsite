@@ -1,18 +1,18 @@
 <template>
-  <div class="thanks">
-    <div class="thankswrap">
+  <div class="done">
+    <div class="donewrap">
       <div class="title">
-        会員登録ありがとうございます。
+        ご予約ありがとうございます。
       </div>
       <div class="buttonField">
-        <button class="thanksBUtton">ログインする</button>
+        <button class="doneBUtton">戻る</button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.thanks {
+.done {
   position: relative;
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@
   padding: 0;
   border: 1px solid black;
 }
-.thankswrap {
+.donewrap {
   width: 25%;
   height: 230px;
   text-align: center;
@@ -37,7 +37,7 @@
   margin-bottom: 30px;
 }
 
-.thanksBUtton {
+.doneBUtton {
   background-color: blue;
   border-radius: 5px;
   border: none;

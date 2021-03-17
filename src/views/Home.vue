@@ -54,11 +54,11 @@ export default {
   },
 
   async created() {
-    const data =  await axios.get("http://127.0.0.1:8000/api/shops");
+    const data = await axios.get("http://127.0.0.1:8000/api/shops");
     // console.log(data.data);
     this.storeData = data.data;
   },
-   mounted() {
+  mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {
@@ -86,9 +86,6 @@ export default {
 </script>
 
 <style scoped>
-.home{
-   background-color: wheat;
-}
 #cards {
   display: flex;
   justify-content: center;

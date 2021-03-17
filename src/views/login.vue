@@ -1,12 +1,8 @@
 <template>
-  <div class="register">
-    <div class="registerwrap">
+  <div class="login">
+    <div class="loginwrap">
       <div class="title">
-        会員登録
-      </div>
-      <div class="nameField">
-        <i class="fas fa-user-alt"></i
-        ><input type="text" placeholder="お名前" />
+        login
       </div>
       <div class="emailField">
         <i class="fas fa-envelope"></i
@@ -23,7 +19,7 @@
 </template>
 
 <style scoped>
-.register {
+.login {
   position: relative;
   display: flex;
   justify-content: center;
@@ -35,7 +31,7 @@
   padding: 0;
   border: 1px solid black;
 }
-.registerwrap {
+.loginwrap {
   width: 25%;
   height: 230px;
   border: 1px solid black;
@@ -64,7 +60,7 @@ input {
   border-left: none;
   border-right: none;
 }
-.resisterBUtton {
+.loginBUtton {
   background-color: blue;
   border-radius: 5px;
   border: none;

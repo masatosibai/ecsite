@@ -3,7 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import register from "../views/register.vue";
 import thanks from "../views/thanks.vue";
-import user from "../views/user.vue";
+import myPage from "../views/myPage.vue";
+import login from "../views/login.vue";
+import done from "../views/done.vue";
 
 Vue.use(VueRouter);
 
@@ -24,10 +26,20 @@ const routes = [
     component: thanks
   },
   {
-    path: "/user/:id",
-    name: "user",
-    component: user,
+    path: "/myPage/:id",
+    name: "myPage",
+    component: myPage,
     props: true,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: login,
+  },
+        {
+    path: "/done",
+    name: "done",
+    component: done,
   },
 ];
 
