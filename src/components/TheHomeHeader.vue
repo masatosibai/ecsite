@@ -3,7 +3,6 @@
     <video
       class="videofield"
       src="../../static/Beer.mp4"
-      controls
       muted
       autoplay
       playinline
