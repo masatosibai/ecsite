@@ -15,13 +15,13 @@
               >
                 <img
                   alt="Vue logo"
-                  :src="store.image"
+                  :src="store.image_url"
                   class="thumbnailsImage"
                 />
                 <div class="sotreName_Location_detailButton">
                   <p class="storeName">{{ store.name }}</p>
                   <p class="storeLocation_category">
-                    {{ store.location }} / {{ store.category }}
+                    {{ store.area }} / {{ store.genre }}
                   </p>
                   <div class="button_icon">
                     <button class="detailBUtton">詳しく見る</button>
@@ -39,23 +39,26 @@
 </template>
 
 <script>
-import common from "../../public/common";
+// import common from "../../public/common";
 import TheHomeFooter from "../components/TheHomeFooter.vue";
 import TheHomeHeader from "../components/TheHomeHeader.vue";
 import TheHomeSummary from "../components/TheHomeSummary.vue";
+import axios from "axios";
 export default {
   components: { TheHomeHeader, TheHomeSummary, TheHomeFooter },
   data() {
     return {
-      storeData: common.store,
+      storeData: [],
       visible: false,
     };
   },
 
-  created() {
-    console.log(this.storeData);
+  async created() {
+    const data =  await axios.get("http://127.0.0.1:8000/api/shops");
+    // console.log(data.data);
+    this.storeData = data.data;
   },
-  mounted() {
+   mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {
@@ -83,6 +86,9 @@ export default {
 </script>
 
 <style scoped>
+.home{
+   background-color: wheat;
+}
 #cards {
   display: flex;
   justify-content: center;
@@ -90,7 +96,7 @@ export default {
   margin-bottom: 100px;
 }
 .cardswarap {
-  width: 70%;
+  width: 90%;
 }
 .cardwrap {
   display: flex;
