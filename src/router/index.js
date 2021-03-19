@@ -6,6 +6,7 @@ import thanks from "../views/thanks.vue";
 import myPage from "../views/myPage.vue";
 import login from "../views/login.vue";
 import done from "../views/done.vue";
+import shops from "../views/shops.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,12 @@ const routes = [
     name: "done",
     component: done,
   },
+  {
+    path: "/shops/:id",
+    name: "shops",
+    component: shops,
+    props: true,
+  }
 ];
 
 const router = new VueRouter({

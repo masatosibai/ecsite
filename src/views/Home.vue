@@ -55,7 +55,7 @@ export default {
 
   async created() {
     const data = await axios.get("http://127.0.0.1:8000/api/shops");
-    // console.log(data.data);
+    console.log(data.data);
     this.storeData = data.data;
   },
   mounted() {
@@ -106,7 +106,6 @@ export default {
   margin-right: 15px;
   margin-bottom: 15px;
   border: 1px solid black;
-  background-color: white;
 }
 .thumbnailsImage {
   height: 150px;

@@ -10,5 +10,19 @@ export default {
     { image: "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg", name: "ラーメン極み", location: "東京都", category: "ラーメン" },
     { image: "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg", name: "鳥雨", location: "大阪府", category: "居酒屋" },
     { image: "https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg", name: "築地色合", location: "東京都", category: "寿司" },
-  ]
+  ],
+        month: {
+        Jan: "01",
+        Feb: "02",
+        Mar: "03",
+        Apr: "04",
+        May: "05",
+        Jun: "06",
+        Jul: "07",
+        Aug: "08",
+        Sep: "09",
+        Oct: "10",
+        Nov: "11",
+        Dec: "12",
+      },
 };

@@ -98,7 +98,6 @@ export default {
   },
 
   async created() {
-    console.log(this.id);
     const data = await axios.get(
       "http://127.0.0.1:8000/api/users/" + this.user_id
     );
