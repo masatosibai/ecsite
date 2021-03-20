@@ -6,17 +6,38 @@
       </div>
       <div class="emailField">
         <i class="fas fa-envelope"></i
-        ><input type="email" placeholder="メール" />
+        ><input type="email" placeholder="メール" v-model="email" />
       </div>
       <div class="pinField">
-        <i class="fas fa-lock"></i><input type="password" placeholder="暗号" />
+        <i class="fas fa-lock"></i
+        ><input type="password" placeholder="暗号" v-model="password" />
       </div>
       <div class="buttonField">
-        <button class="resisterBUtton">登録</button>
+        <button class="resisterBUtton" @click="login">ログイン</button>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    login() {
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+      });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .login {

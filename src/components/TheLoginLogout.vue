@@ -1,16 +1,14 @@
 <template>
-  <nav id="login_logout_menu">
+  <nav id="login_logout">
     <ul>
       <li>
         <router-link :to="{ name: 'register' }">新規登録</router-link>
       </li>
-      <li>
+      <li v-show="!$store.state.auth">
         <router-link :to="{ name: 'login' }">ログイン</router-link>
       </li>
-      <li>
-        <a href="#cards">
-          ログアウト
-        </a>
+      <li v-show="$store.state.auth">
+        <p @click="logout">ログアウト</p>
       </li>
     </ul>
   </nav>
@@ -21,12 +19,16 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    },
+  },
 };
 </script>
 
 <style scoped>
-#login_logout_menu {
+#login_logout {
   color: white;
   font-family: "Noto Serif JP", serif;
   font-size: 18px;
