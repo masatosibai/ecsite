@@ -48,7 +48,12 @@
                     {{ store.area }} / {{ store.genre }}
                   </p>
                   <div class="button_icon">
-                    <button class="detailBUtton">詳しく見る</button>
+                    <button class="detailBUtton">
+                      <router-link
+                        v-bind:to="{ name: 'shops', params: { id: store.id } }"
+                        >詳しく見る</router-link
+                      >
+                    </button>
                     <i class="fas fa-heart fa-2x heartIcon"></i>
                   </div>
                 </div>
@@ -226,6 +231,10 @@ export default {
   border: none;
   color: white;
   width: 100px;
+}
+.detailBUtton a {
+  color: white;
+  text-decoration: none;
 }
 .button_icon {
   display: flex;
