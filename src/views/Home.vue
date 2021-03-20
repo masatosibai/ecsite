@@ -2,7 +2,31 @@
   <div class="home">
     <the-home-header />
     <the-home-summary />
-    <img src="../../static/stores.png" alt="" />
+    <div id="storeName_searchBox">
+      <div id="storeName_searchBoxWrap">
+        <img src="../../static/stores.png" alt="" />
+        <div id="searchBoxs">
+          <p>エリア:</p>
+          <select v-model="selectedArea">
+            <option selected>ALL Area</option>
+            <option v-for="n in storeArea" :key="n">{{ n }}</option>
+          </select>
+          <p>ジャンル:</p>
+          <select v-model="selectedGenre">
+            <option selected>ALL Genre</option>
+            <option v-for="m in storeGenre" :key="m">{{ m }}</option>
+          </select>
+          <input
+            type="text"
+            placeholder="自由検索ワード"
+            v-model="selectedFreeWord"
+          />
+          <button @click="searchClick()">
+            検索
+          </button>
+        </div>
+      </div>
+    </div>
     <transition name="fade">
       <div v-show="visible">
         <div id="cards">
@@ -48,15 +72,31 @@ export default {
   components: { TheHomeHeader, TheHomeSummary, TheHomeFooter },
   data() {
     return {
+      defaltStoreDate: [],
       storeData: [],
+      storeArea: [],
+      storeGenre: [],
+      selectedArea: "ALL Area",
+      selectedGenre: "ALL Genre",
+      selectedFreeWord: "",
       visible: false,
     };
   },
 
   async created() {
     const data = await axios.get("http://127.0.0.1:8000/api/shops");
-    console.log(data.data);
+    const area = [];
+    const genre = [];
+    for (const store of data.data) {
+      area.push(store.area);
+      genre.push(store.genre);
+    }
     this.storeData = data.data;
+    this.defaltStoreDate = data.data;
+    this.storeArea = Array.from(new Set(area));
+    this.storeGenre = Array.from(new Set(genre));
+    // console.log(this.selectedArea);
+    // console.log(this.selectedGenre);
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -67,9 +107,9 @@ export default {
   methods: {
     handleScroll() {
       const top = this.$el.getBoundingClientRect().top * -1;
-      console.log(top);
+      // console.log(top);
       if (!this.visible) {
-        console.log("from here");
+        // console.log("from here");
         if (top > 0) {
           this.visible = true;
         }
@@ -77,15 +117,69 @@ export default {
       if (this.visible) {
         if (top === 0) {
           this.visible = false;
-          console.log("no visible");
+          // console.log("no visible");
         }
       }
+    },
+    searchClick() {
+      let filteredArea = this.defaltStoreDate;
+      if (this.selectedArea !== "ALL Area") {
+        filteredArea = this.defaltStoreDate.filter(
+          ({ area }) => area === this.selectedArea
+        );
+      }
+      let filteredGenre = filteredArea;
+      if (this.selectedGenre != "ALL Genre") {
+        filteredGenre = filteredArea.filter(
+          ({ genre }) => genre === this.selectedGenre
+        );
+      }
+      let filterdFreeWord = filteredGenre;
+      if (this.selectedFreeWord != "") {
+        filterdFreeWord = filterdFreeWord.filter(({ description }) =>
+          description.includes(this.selectedFreeWord)
+        );
+      }
+      // console.log(filteredArea);
+      // console.log(filteredGenre);
+      // console.log(filterdFreeWord);
+      this.storeData = filterdFreeWord;
+      this.selectedArea = "ALL Area";
+      this.selectedGenre = "ALL Genre";
+      this.selectedFreeWord = "";
     },
   },
 };
 </script>
 
 <style scoped>
+#storeName_searchBox {
+  display: flex;
+  justify-content: center;
+}
+#storeName_searchBoxWrap {
+  position: relative;
+  height: 50px;
+  width: 75%;
+}
+#storeName_searchBox img {
+  position: absolute;
+  left: 0;
+}
+#searchBoxs {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 25px;
+  display: flex;
+}
+#searchBoxs p {
+  font-size: 23px;
+}
+/* 
+#storeName_searchBox select {
+  width: 20%;
+} */
 #cards {
   display: flex;
   justify-content: center;

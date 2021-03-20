@@ -67,7 +67,6 @@
 
 <script>
 import axios from "axios";
-import common from "../../public/common";
 export default {
   props: ["id"],
   data() {
@@ -75,7 +74,6 @@ export default {
       shop_id: this.id,
       shop_info: [],
       date: new Date(),
-      month: common.month,
       reserveDate: "",
       reserveTime: "",
       reserveNum: "",
@@ -83,11 +81,11 @@ export default {
   },
   watch: {
     date: function(newVal) {
-      this.formatDate(newVal.toString().match(/[^\s]+/g));
+      this.reserveDate = this.formatDate(newVal);
     },
     reserveTime: function(newVal) {
       this.reserveTime = newVal;
-      console.log(newVal);
+      // console.log(newVal);
     },
   },
 
@@ -96,11 +94,18 @@ export default {
       "http://127.0.0.1:8000/api/shops/" + this.shop_id
     );
     this.shop_info = data.data;
+    let today = new Date();
+    this.reserveDate = this.formatDate(today);
   },
   methods: {
-    formatDate(value) {
-      this.reserveDate = value[3] + "/" + this.month[value[1]] + "/" + value[2];
-      console.log(this.reserveDate);
+    formatDate(today) {
+      return (
+        today.getFullYear() +
+        "/" +
+        (today.getMonth() + 1) +
+        "/" +
+        today.getDate()
+      );
     },
   },
 };
@@ -114,7 +119,7 @@ export default {
 }
 #shopInfoWrap {
   text-align: left;
-  width: 35%;
+  width: 40%;
   margin-right: 5%;
 }
 #shopTitle {
