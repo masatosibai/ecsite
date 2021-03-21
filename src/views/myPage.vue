@@ -23,7 +23,12 @@
                 {{ shops.area }} / {{ shops.genre }}
               </p>
               <div class="button_icon">
-                <button class="detailBUtton">詳しく見る</button>
+                <button
+                  class="detailBUtton"
+                  @click="deletFavoritedStore(shops.id)"
+                >
+                  削除
+                </button>
                 <i class="fas fa-heart fa-2x heartIcon"></i>
               </div>
             </div>
@@ -119,11 +124,30 @@ export default {
         .delete("http://127.0.0.1:8000/api/reservation/" + selectedID)
         .then((response) => {
           console.log(response);
-          this.$router.go({ path: this.$router.currentRoute.path, force: true });
+          this.$router.go({
+            path: this.$router.currentRoute.path,
+            force: true,
+          });
         })
         .catch((err) => {
           console.log("err:", err);
         });
+    },
+    deletFavoritedStore(shopID) {
+      axios({
+        method: "delete",
+        url: "http://127.0.0.1:8000/api/likes",
+        data: {
+          userID: this.user_id,
+          shopID: shopID,
+        },
+      }).then((response) => {
+        console.log(response);
+        this.$router.go({
+          path: this.$router.currentRoute.path,
+          force: true,
+        });
+      });
     },
   },
 };
