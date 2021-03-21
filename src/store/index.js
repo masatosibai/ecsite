@@ -7,14 +7,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    auth: false
+    auth: false,
+    userID:""
   },
   mutations: {
   auth(state, payload) {
       state.auth = payload;
     },
+    
   logout(state, payload) {
       state.auth = payload;
+    },
+  userID(state, payload) {
+      state.userID = payload;
     },
   },
   actions: {
@@ -27,6 +32,7 @@ export default new Vuex.Store({
         }
       );
       commit("auth", responseLogin.data.auth);
+      commit("userID", responseLogin.data.id);
       router.replace("/");
     },
     logout({ commit }) {
@@ -37,7 +43,6 @@ export default new Vuex.Store({
         .then((response) => {
           console.log(response);
           commit("logout", response.data.auth);
-          router.replace("/");
         })
         .catch((error) => {
           console.log(error);

@@ -1,5 +1,5 @@
 <template>
-  <nav id="login_logout">
+  <nav>
     <ul>
       <li>
         <router-link :to="{ name: 'register' }">新規登録</router-link>
@@ -9,6 +9,12 @@
       </li>
       <li v-show="$store.state.auth">
         <p @click="logout">ログアウト</p>
+      </li>
+      <li v-show="$store.state.auth">
+        <router-link
+          :to="{ name: 'myPage', params: { id: $store.state.userID } }"
+          >マイページ</router-link
+        >
       </li>
     </ul>
   </nav>
@@ -28,11 +34,6 @@ export default {
 </script>
 
 <style scoped>
-#login_logout {
-  color: white;
-  font-family: "Noto Serif JP", serif;
-  font-size: 18px;
-}
 a {
   text-decoration: none;
   color: white;
