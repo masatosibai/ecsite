@@ -24,7 +24,7 @@
       </select>
       <select v-model="reserveNum">
         <option disabled value="">予約人数</option>
-        <option v-for="m in 50" :key="m">{{ m }}人</option>
+        <option v-for="m in 30" :key="m">{{ m }}</option>
       </select>
       <div id="reservedInfo">
         <div class="reservationsCardWrap">
@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <div id="reserveButton">
+      <div id="reserveButton" @click="reserveButton">
         予約する
       </div>
     </div>
@@ -106,6 +106,19 @@ export default {
         "/" +
         today.getDate()
       );
+    },
+    async reserveButton() {
+      await axios
+        .post("http://127.0.0.1:8000/api/reservation", {
+          user_id: this.$store.state.userID,
+          shop_id: this.shop_id,
+          date: this.reserveDate,
+          time: this.reserveTime,
+          user_num: this.reserveNum,
+        })
+        .then((response) => {
+          console.log(response);
+        });
     },
   },
 };
