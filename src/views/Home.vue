@@ -54,7 +54,10 @@
                         >詳しく見る</router-link
                       >
                     </button>
-                    <i class="fas fa-heart fa-2x heartIcon"></i>
+                    <i
+                      class="fas fa-heart fa-2x heartIcon"
+                      @click="favoriteStore(store.id)"
+                    ></i>
                   </div>
                 </div>
               </div>
@@ -153,6 +156,22 @@ export default {
       this.selectedGenre = "ALL Genre";
       this.selectedFreeWord = "";
     },
+    favoriteStore(storeID) {
+      if (this.$store.state.auth) {
+        console.log(this.$store.state.userID);
+        console.log(storeID);
+        axios
+          .post("http://127.0.0.1:8000/api/likes", {
+            userID: this.$store.state.userID,
+            shopID: storeID,
+          })
+          .then((response) => {
+            console.log(response);
+          });
+      } else {
+        alert("ログインしてください");
+      }
+    },
   },
 };
 </script>
@@ -241,6 +260,9 @@ export default {
   justify-content: space-between;
   align-content: center;
   width: 95%;
+}
+i {
+  cursor: pointer;
 }
 .fade-enter-active {
   animation: slow_show 3s;

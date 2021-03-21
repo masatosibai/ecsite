@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     auth: false,
-    userID:""
+    userID:-1
   },
   mutations: {
   auth(state, payload) {

@@ -1,7 +1,7 @@
 <template>
   <div id="myPage">
     <div id="userName">
-      <h2>{{ user_info.name }}</h2>
+      <h2>{{ user_info.name }}様</h2>
     </div>
     <div id="cards">
       <div class="cardswarap">
