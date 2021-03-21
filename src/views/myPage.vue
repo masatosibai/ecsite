@@ -40,9 +40,13 @@
       >
         <div id="reservationsCardWrap">
           <div id="reservationsCardTitle">
-            <i id="reservationclock" class="far fa-clock reservationclock"></i>
+            <i id="reservationclock" class="far fa-clock"></i>
             <p>予約{{ reservationIndex + 1 }}</p>
-            <i id="reservationDelete" class="fas fa-times"></i>
+            <i
+              id="reservationDelete"
+              class="fas fa-times"
+              @click="deleteReservation(reservation.id)"
+            ></i>
           </div>
           <div id="reservationsCard">
             <div class="reservationsCardWrap">
@@ -107,6 +111,20 @@ export default {
     console.log(this.user_info);
     console.log(this.user_likes);
     console.log(this.user_reserve);
+  },
+  methods: {
+    deleteReservation(selectedID) {
+      console.log(selectedID);
+      axios
+        .delete("http://127.0.0.1:8000/api/reservation/" + selectedID)
+        .then((response) => {
+          console.log(response);
+          this.$router.go({ path: this.$router.currentRoute.path, force: true });
+        })
+        .catch((err) => {
+          console.log("err:", err);
+        });
+    },
   },
 };
 </script>
@@ -205,6 +223,7 @@ export default {
   margin-right: 10%;
 }
 #reservationDelete {
+  cursor: pointer;
   position: absolute;
   right: 0;
   margin-right: 3%;
