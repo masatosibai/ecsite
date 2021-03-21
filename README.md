@@ -1,24 +1,24 @@
-# ecsite
+###要件定義
+　自社で予約システムを運用する
+ 年間で１万件の予約を予定している。
 
-## Project setup
-```
-yarn install
-```
+###環境
+vue@2.6.12
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+###機能一覧
+- 店舗一覧表示機能
+- お店の予約機能　
+- 新規ユーザー登録機能
+- ユーザ情報表示機能
+- ユーザのお気に入り店舗表示機能
+- ユーザの予約表示機能
+- ログイン機能
+- ログアウト機能
 
-### Compiles and minifies for production
-```
-yarn build
-```
+###ワイヤーフレーム
+今後作成予定
 
-### Lints and fixes files
-```
-yarn lint
-```
+###画面遷移図
+今後作成予定
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
