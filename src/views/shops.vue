@@ -108,17 +108,21 @@ export default {
       );
     },
     async reserveButton() {
-      await axios
-        .post("http://127.0.0.1:8000/api/reservation", {
-          user_id: this.$store.state.userID,
-          shop_id: this.shop_id,
-          date: this.reserveDate,
-          time: this.reserveTime,
-          user_num: this.reserveNum,
-        })
-        .then((response) => {
-          console.log(response);
-        });
+      if (this.$store.state.auth) {
+        await axios
+          .post("http://127.0.0.1:8000/api/reservation", {
+            user_id: this.$store.state.userID,
+            shop_id: this.shop_id,
+            date: this.reserveDate,
+            time: this.reserveTime,
+            user_num: this.reserveNum,
+          })
+          .then((response) => {
+            console.log(response);
+          });
+      } else {
+        alert("ログインしてください");
+      }
     },
   },
 };

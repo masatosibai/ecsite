@@ -158,8 +158,6 @@ export default {
     },
     favoriteStore(storeID) {
       if (this.$store.state.auth) {
-        console.log(this.$store.state.userID);
-        console.log(storeID);
         axios
           .post("http://127.0.0.1:8000/api/likes", {
             userID: this.$store.state.userID,
