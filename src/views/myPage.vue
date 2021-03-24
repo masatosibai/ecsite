@@ -50,7 +50,7 @@
             <i
               id="reservationDelete"
               class="fas fa-times"
-              @click="deleteReservation(reservation.id)"
+              @click="deleteReservation(reservation.resrve_info.id)"
             ></i>
           </div>
           <div id="reservationsCard">
@@ -59,7 +59,7 @@
                 <p>Shop</p>
               </div>
               <div class="reservationContent">
-                <p>{{ reservation.shops.name }}</p>
+                <p>{{ reservation.name }}</p>
               </div>
             </div>
             <div class="reservationsCardWrap">
@@ -67,7 +67,7 @@
                 <p>Date</p>
               </div>
               <div class="reservationContent">
-                <p>{{ reservation.date }}</p>
+                <p>{{ reservation.resrve_info.date }}</p>
               </div>
             </div>
             <div class="reservationsCardWrap">
@@ -75,7 +75,7 @@
                 <p>Time</p>
               </div>
               <div class="reservationContent">
-                <p>{{ reservation.time }}</p>
+                <p>{{ reservation.resrve_info.time }}</p>
               </div>
             </div>
             <div class="reservationsCardWrap">
@@ -83,7 +83,7 @@
                 <p>Number</p>
               </div>
               <div class="reservationContent">
-                <p>{{ reservation.user_num }}</p>
+                <p>{{ reservation.resrve_info.user_num }}</p>
               </div>
             </div>
           </div>
@@ -110,12 +110,13 @@ export default {
     const data = await axios.get(
       "http://127.0.0.1:8000/api/users/" + this.user_id
     );
-    this.user_info = data.data[0];
-    this.user_likes = data.data[0].shops;
-    this.user_reserve = data.data[1];
-    console.log(this.user_info);
-    console.log(this.user_likes);
-    console.log(this.user_reserve);
+    // console.log(data.data);
+    this.user_info = data.data;
+    this.user_likes = data.data.likes;
+    this.user_reserve = data.data.reservations;
+    // console.log(this.user_info);
+    // console.log(this.user_likes);
+    // console.log(this.user_reserve);
   },
   methods: {
     deleteReservation(selectedID) {
