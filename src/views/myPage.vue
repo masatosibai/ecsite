@@ -108,7 +108,7 @@ export default {
 
   async created() {
     const data = await axios.get(
-      "http://127.0.0.1:8000/api/users/" + this.user_id
+      process.env.VUE_APP_URL + "/users/" + this.user_id
     );
     // console.log(data.data);
     this.user_info = data.data;
@@ -122,7 +122,7 @@ export default {
     deleteReservation(selectedID) {
       console.log(selectedID);
       axios
-        .delete("http://127.0.0.1:8000/api/reservation/" + selectedID)
+        .delete(process.env.VUE_APP_URL + "/reservation/" + selectedID)
         .then((response) => {
           console.log(response);
           this.$router.go({
@@ -137,7 +137,7 @@ export default {
     deletFavoritedStore(shopID) {
       axios({
         method: "delete",
-        url: "http://127.0.0.1:8000/api/likes",
+        url: process.env.VUE_APP_URL + "/likes",
         data: {
           userID: this.user_id,
           shopID: shopID,

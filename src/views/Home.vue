@@ -92,7 +92,7 @@ export default {
   },
 
   async created() {
-    const data = await axios.get("http://127.0.0.1:8000/api/shops");
+    const data = await axios.get(process.env.VUE_APP_URL + "/shops");
     const area = [];
     const genre = [];
     for (const store of data.data) {

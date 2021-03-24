@@ -37,7 +37,7 @@ export default {
   methods: {
     register() {
       axios
-        .post("http://127.0.0.1:8000/api/users", {
+        .post(process.env.VUE_APP_URL + "/users", {
           name: this.name,
           email: this.email,
           password: this.password,
