@@ -27,45 +27,41 @@
         </div>
       </div>
     </div>
-    <transition name="fade">
-      <div v-show="visible">
-        <div id="cards">
-          <div class="cardswarap">
-            <div class="cardwrap">
-              <div
-                class="card"
-                v-for="(store, index) in storeData"
-                :key="index"
-              >
-                <img
-                  alt="Vue logo"
-                  :src="store.image_url"
-                  class="thumbnailsImage"
-                />
-                <div class="sotreName_Location_detailButton">
-                  <p class="storeName">{{ store.name }}</p>
-                  <p class="storeLocation_category">
-                    {{ store.area }} / {{ store.genre }}
-                  </p>
-                  <div class="button_icon">
-                    <button class="detailBUtton">
-                      <router-link
-                        v-bind:to="{ name: 'shops', params: { id: store.id } }"
-                        >詳しく見る</router-link
-                      >
-                    </button>
-                    <i
-                      class="fas fa-heart fa-2x heartIcon"
-                      @click="favoriteStore(store.id)"
-                    ></i>
-                  </div>
+    <!-- <transition name="fade"> -->
+    <div v-show="visible">
+      <div id="cards">
+        <div class="cardswarap">
+          <div class="cardwrap">
+            <div class="card" v-for="(store, index) in storeData" :key="index">
+              <img
+                alt="Vue logo"
+                :src="store.image_url"
+                class="thumbnailsImage"
+              />
+              <div class="sotreName_Location_detailButton">
+                <p class="storeName">{{ store.name }}</p>
+                <p class="storeLocation_category">
+                  {{ store.area }} / {{ store.genre }}
+                </p>
+                <div class="button_icon">
+                  <button class="detailBUtton">
+                    <router-link
+                      v-bind:to="{ name: 'shops', params: { id: store.id } }"
+                      >詳しく見る</router-link
+                    >
+                  </button>
+                  <i
+                    class="fas fa-heart fa-2x heartIcon"
+                    @click="favoriteStore(store.id)"
+                  ></i>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </transition>
+    </div>
+    <!-- </transition> -->
     <the-home-footer />
   </div>
 </template>
