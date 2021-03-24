@@ -155,7 +155,7 @@ export default {
     favoriteStore(storeID) {
       if (this.$store.state.auth) {
         axios
-          .post("http://127.0.0.1:8000/api/likes", {
+          .post(process.env.VUE_APP_URL + "/likes", {
             userID: this.$store.state.userID,
             shopID: storeID,
           })

@@ -5,11 +5,32 @@
         会員登録ありがとうございます。
       </div>
       <div class="buttonField">
-        <button class="thanksBUtton">ログインする</button>
+        <button class="thanksBUtton" @click="loginclik">
+          <router-link :to="{ name: 'login' }">ログインする</router-link>
+        </button>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    login() {
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+      });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .thanks {
@@ -43,5 +64,9 @@
   border: none;
   color: white;
   width: 30%;
+}
+.thanksBUtton a {
+  color: white;
+  text-decoration: none;
 }
 </style>
