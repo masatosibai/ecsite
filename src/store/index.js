@@ -25,7 +25,7 @@ export default new Vuex.Store({
   actions: {
     async login({ commit }, { email, password }) {
       const responseLogin = await axios.post(
-        process.env.VUE_APP_URL+"/login",
+        process.env.VUE_APP_API_ORIGIN+"/login",
         {
           email: email,
           password: password,
@@ -37,7 +37,7 @@ export default new Vuex.Store({
     },
     logout({ commit }) {
       axios
-        .post(process.env.VUE_APP_URL+"/logout", {
+        .post(process.env.VUE_APP_API_ORIGIN+"/logout", {
           auth: this.state.auth,
         })
         .then((response) => {

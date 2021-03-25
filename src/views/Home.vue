@@ -88,7 +88,7 @@ export default {
   },
 
   async created() {
-    const data = await axios.get(process.env.VUE_APP_URL + "/shops");
+    const data = await axios.get(process.env.VUE_APP_API_ORIGIN + "/shops");
     const area = [];
     const genre = [];
     for (const store of data.data) {
@@ -101,6 +101,7 @@ export default {
     this.storeGenre = Array.from(new Set(genre));
     // console.log(this.selectedArea);
     // console.log(this.selectedGenre);
+    console.log(process.env.VUE_APP_API_ORIGIN);
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -155,7 +156,7 @@ export default {
     favoriteStore(storeID) {
       if (this.$store.state.auth) {
         axios
-          .post(process.env.VUE_APP_URL + "/likes", {
+          .post(process.env.VUE_APP_API_ORIGIN + "/likes", {
             userID: this.$store.state.userID,
             shopID: storeID,
           })

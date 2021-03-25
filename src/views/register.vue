@@ -37,7 +37,7 @@ export default {
   methods: {
     register() {
       axios
-        .post(process.env.VUE_APP_URL + "/users", {
+        .post(process.env.VUE_APP_API_ORIGIN + "/users", {
           name: this.name,
           email: this.email,
           password: this.password,
