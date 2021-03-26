@@ -23,12 +23,11 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async login({ commit }, { email, password }) {
+    async login({ commit }, { jwt }) {
       const responseLogin = await axios.post(
         process.env.VUE_APP_API_ORIGIN+"/login",
         {
-          email: email,
-          password: password,
+          idtoken:jwt
         }
       );
       commit("auth", responseLogin.data.auth);
