@@ -21,13 +21,25 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {};
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          // Sign-out successful.
+          alert("ログアウトしました。");
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log(error.message);
+        });
+      // this.$store.dispatch("logout");
     },
   },
 };

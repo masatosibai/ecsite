@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -36,19 +37,29 @@ export default {
 
   methods: {
     register() {
-      axios
-        .post(process.env.VUE_APP_API_ORIGIN + "/users", {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-        })
-        .then((response) => {
-          console.log(response);
-          this.$router.replace("/thanks");
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          alert("Create account" + this.name + "様");
+          this.$router.push("/login");
         })
         .catch((error) => {
-          alert(error);
+          alert(error.message);
         });
+      // axios
+      //   .post(process.env.VUE_APP_API_ORIGIN + "/users", {
+      //     name: this.name,
+      //     email: this.email,
+      //     password: this.password,
+      //   })
+      //   .then((response) => {
+      //     console.log(response);
+      //     this.$router.replace("/thanks");
+      //   })
+      //   .catch((error) => {
+      //     alert(error);
+      //   });
     },
   },
 };

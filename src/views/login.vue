@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   data() {
     return {
@@ -30,11 +31,30 @@ export default {
 
   methods: {
     login() {
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password,
-      });
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          () => {
+            alert("ログイン成功");
+            const JWT = firebase.auth().currentUser.getIdToken(true);
+            this.$store.dispatch("login", {
+              idtoken: JWT,
+            });
+            this.$router.push("/");
+          },
+          (err) => {
+            alert(err.message);
+          }
+        );
     },
+
+    // login() {
+    //   this.$store.dispatch("login", {
+    //     email: this.email,
+    //     password: this.password,
+    //   });
+    // },
   },
 };
 </script>
