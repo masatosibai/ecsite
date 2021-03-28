@@ -39,7 +39,7 @@ export default {
         .then(
           () => {
             alert("ログイン成功");
-            const JWT = firebase.auth().currentUser.getIdToken(true);
+            const JWT = firebase.auth().currentUser.getIdToken();
             // console.log(firebase.auth().currentUser.email);
             // console.log(JWT);
             this.$store.dispatch("login", {
