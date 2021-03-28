@@ -101,7 +101,7 @@ export default {
     this.storeGenre = Array.from(new Set(genre));
     // console.log(this.selectedArea);
     // console.log(this.selectedGenre);
-    console.log(process.env.VUE_APP_API_ORIGIN);
+    // console.log(process.env.VUE_APP_API_ORIGIN);
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -160,8 +160,8 @@ export default {
             userID: this.$store.state.userID,
             shopID: storeID,
           })
-          .then((response) => {
-            console.log(response);
+          .then(() => {
+            // console.log(response);
           });
       } else {
         alert("ログインしてください");

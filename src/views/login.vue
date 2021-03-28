@@ -9,8 +9,10 @@
         ><input type="email" placeholder="メール" v-model="email" />
       </div>
       <div class="pinField">
-        <i class="fas fa-lock"></i
-        ><input type="password" placeholder="暗号" v-model="password" />
+        <i class="fas fa-lock"></i>
+        <form>
+          <input type="password" placeholder="暗号" v-model="password" />
+        </form>
       </div>
       <div class="buttonField">
         <button class="resisterBUtton" @click="login">ログイン</button>
@@ -38,6 +40,8 @@ export default {
           () => {
             alert("ログイン成功");
             const JWT = firebase.auth().currentUser.getIdToken(true);
+            // console.log(firebase.auth().currentUser.email);
+            // console.log(JWT);
             this.$store.dispatch("login", {
               idtoken: JWT,
             });

@@ -34,6 +34,7 @@ export default {
         .then(() => {
           // Sign-out successful.
           alert("ログアウトしました。");
+          this.$store.dispatch("logout");
         })
         .catch((error) => {
           // An error happened.

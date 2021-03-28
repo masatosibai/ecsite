@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     auth: false,
-    userID:-1
+    userID:1
   },
   mutations: {
   auth(state, payload) {
@@ -23,29 +23,29 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async login({ commit }, { jwt }) {
+    async login({ commit }, { idtoken }) {
       const responseLogin = await axios.post(
-        process.env.VUE_APP_API_ORIGIN+"/login",
-        {
-          idtoken:jwt
-        }
+        process.env.VUE_APP_API_ORIGIN + "/login",{
+          idtoken}
       );
-      commit("auth", responseLogin.data.auth);
-      commit("userID", responseLogin.data.id);
+      console.log(responseLogin);
+      commit("auth", true);
+      // commit("userID", responseLogin.data.id);
       router.replace("/");
     },
     logout({ commit }) {
-      axios
-        .post(process.env.VUE_APP_API_ORIGIN+"/logout", {
-          auth: this.state.auth,
-        })
-        .then((response) => {
-          console.log(response);
-          commit("logout", response.data.auth);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      // axios
+      //   .post(process.env.VUE_APP_API_ORIGIN+"/logout", {
+      //     auth: this.state.auth,
+      //   })
+      //   .then((response) => {
+      //     console.log(response);
+      //     commit("logout", response.data.auth);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+      commit("logout", false);
     },
     
   },
