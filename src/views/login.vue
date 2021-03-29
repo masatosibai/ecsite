@@ -10,14 +10,12 @@
       </div>
       <div class="pinField">
         <i class="fas fa-lock"></i>
-        <form>
-          <input
-            type="password"
-            placeholder="暗号"
-            v-model="password"
-            autocomplete="on"
-          />
-        </form>
+        <input
+          type="password"
+          placeholder="暗号"
+          v-model="password"
+          autocomplete="on"
+        />
       </div>
       <div class="buttonField">
         <button class="resisterBUtton" @click="login">ログイン</button>
@@ -44,11 +42,8 @@ export default {
         .then(
           () => {
             alert("ログイン成功");
-            // const JWT = firebase.auth().currentUser.getIdToken();
-            // // // console.log(firebase.auth().currentUser.email);
-            // console.log(JWT);
             this.$store.dispatch("login");
-            // this.$router.push("/");
+            this.$router.push("/");
           },
           (err) => {
             alert(err.message);

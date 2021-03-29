@@ -9,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     auth: false,
-    userID:1
+    userID:-1
   },
   mutations: {
   auth(state, payload) {
@@ -24,21 +24,26 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async login() {   
+    async login({ commit}) {
       firebase.auth().onAuthStateChanged(async currentUser => {
     if (currentUser) {
       const idToken = await currentUser.getIdToken(true);
       // 何らかの認証が必要なリクエストをIDトークン付きで飛ばす
-      console.log(idToken);
-      const res = await axios.get(
+      // console.log(idToken);
+       await axios.get(
        process.env.VUE_APP_API_ORIGIN + "/login",
         {
           headers: {
             Authorization: idToken
           }
         }
-      );
-      console.log(res);
+      ).then((res) => {
+        // console.log(res);
+        // console.log(res.data.auth);
+        // console.log(res.data.id);
+        commit("auth", res.data.auth);
+        commit("userID", res.data.id);
+      })
     } else {
       // window.location.href = "/login";
     }

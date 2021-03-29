@@ -37,12 +37,12 @@ export default {
 
   methods: {
     register() {
+      this.registerDatabase();
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(() => {
           alert("Create account" + this.name + "様");
-          this.registerDatabase();
         })
         .catch((error) => {
           alert(error.message);
