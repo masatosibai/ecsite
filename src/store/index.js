@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import router from "../router/index";
+import firebase from "firebase";
+// import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -23,15 +24,33 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async login({ commit }, { idtoken }) {
-      const responseLogin = await axios.post(
-        process.env.VUE_APP_API_ORIGIN + "/login",{
-          idtoken}
+    async login() {   
+      firebase.auth().onAuthStateChanged(async currentUser => {
+    if (currentUser) {
+      const idToken = await currentUser.getIdToken(true);
+      // 何らかの認証が必要なリクエストをIDトークン付きで飛ばす
+      console.log(idToken);
+      const res = await axios.get(
+       process.env.VUE_APP_API_ORIGIN + "/login",
+        {
+          headers: {
+            Authorization: idToken
+          }
+        }
       );
-      console.log(responseLogin);
-      commit("auth", true);
-      // commit("userID", responseLogin.data.id);
-      router.replace("/");
+      console.log(res);
+    } else {
+      // window.location.href = "/login";
+    }
+  });
+      // const responseLogin = await axios.post(
+      //   process.env.VUE_APP_API_ORIGIN + "/login",{
+      //     idtoken}
+      // );
+      // console.log(responseLogin);
+      // commit("auth", true);
+      // // commit("userID", responseLogin.data.id);
+      // router.replace("/");
     },
     logout({ commit }) {
       // axios

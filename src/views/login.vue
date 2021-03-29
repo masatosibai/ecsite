@@ -11,7 +11,12 @@
       <div class="pinField">
         <i class="fas fa-lock"></i>
         <form>
-          <input type="password" placeholder="暗号" v-model="password" />
+          <input
+            type="password"
+            placeholder="暗号"
+            v-model="password"
+            autocomplete="on"
+          />
         </form>
       </div>
       <div class="buttonField">
@@ -39,13 +44,11 @@ export default {
         .then(
           () => {
             alert("ログイン成功");
-            const JWT = firebase.auth().currentUser.getIdToken();
-            // console.log(firebase.auth().currentUser.email);
+            // const JWT = firebase.auth().currentUser.getIdToken();
+            // // // console.log(firebase.auth().currentUser.email);
             // console.log(JWT);
-            this.$store.dispatch("login", {
-              idtoken: JWT,
-            });
-            this.$router.push("/");
+            this.$store.dispatch("login");
+            // this.$router.push("/");
           },
           (err) => {
             alert(err.message);
