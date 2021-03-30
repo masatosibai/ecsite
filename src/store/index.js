@@ -24,7 +24,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async login({ commit}) {
+    async login({ commit }) {
       firebase.auth().onAuthStateChanged(async currentUser => {
     if (currentUser) {
       const idToken = await currentUser.getIdToken(true);
