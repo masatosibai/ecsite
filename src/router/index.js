@@ -7,6 +7,7 @@ import myPage from "../views/myPage.vue";
 import login from "../views/login.vue";
 import done from "../views/done.vue";
 import shops from "../views/shops.vue";
+import admin from "../views/admin.vue";
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,12 @@ const routes = [
     path: "/shops/:id",
     name: "shops",
     component: shops,
+    props: true,
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: admin,
     props: true,
   }
 ];

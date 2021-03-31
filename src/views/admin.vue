@@ -2,7 +2,7 @@
   <div class="register">
     <div class="registerwrap">
       <div class="title">
-        会員登録
+        ショップ管理者登録画面
       </div>
       <div class="nameField">
         <i class="fas fa-user-alt"></i
@@ -55,7 +55,6 @@ export default {
           name: this.name,
           email: this.email,
           password: this.password,
-          role: 3,
         })
         .then((response) => {
           console.log(response);

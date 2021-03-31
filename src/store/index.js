@@ -9,7 +9,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     auth: false,
-    userID:-1
+    userID: -1,
+    role:-1
   },
   mutations: {
   auth(state, payload) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
   userID(state, payload) {
       state.userID = payload;
+    },
+  role(state, payload) {
+      state.role = payload;
     },
   },
   actions: {
@@ -43,6 +47,7 @@ export default new Vuex.Store({
         // console.log(res.data.id);
         commit("auth", res.data.auth);
         commit("userID", res.data.id);
+        commit("role", res.data.role);
       })
     } else {
       // window.location.href = "/login";
