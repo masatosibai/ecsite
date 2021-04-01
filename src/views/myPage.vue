@@ -111,8 +111,6 @@ export default {
     firebase.auth().onAuthStateChanged(async (currentUser) => {
       if (currentUser) {
         const idToken = await currentUser.getIdToken(true);
-        // 何らかの認証が必要なリクエストをIDトークン付きで飛ばす
-        // console.log(idToken);
         const data = await axios.get(
           process.env.VUE_APP_API_ORIGIN + "/users/" + this.user_id,
           {
@@ -125,31 +123,11 @@ export default {
         this.user_info = data.data;
         this.user_likes = data.data.likes;
         this.user_reserve = data.data.reservations;
-        // await axios
-        //   .get(process.env.VUE_APP_API_ORIGIN + "/login", {
-        //     headers: {
-        //       Authorization: idToken,
-        //     },
-        //   })
-        //   .then((res) => {
-        //     console.log(res);
-        //     // console.log(res.data.auth);
-        //     // console.log(res.data.id);
-        //   });
       } else {
         // window.location.href = "/login";
       }
     });
-    // const data = await axios.get(
-    //   process.env.VUE_APP_API_ORIGIN + "/users/" + this.user_id
-    // );
-    // // console.log(data.data);
-    // this.user_info = data.data;
-    // this.user_likes = data.data.likes;
-    // this.user_reserve = data.data.reservations;
-    // console.log(this.user_info);
-    // console.log(this.user_likes);
-    // console.log(this.user_reserve);
+
   },
   methods: {
     deleteReservation(selectedID) {

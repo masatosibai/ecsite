@@ -7,6 +7,9 @@
       <li v-show="$store.state.role === 1">
         <router-link :to="{ name: 'admin' }">管理者画面</router-link>
       </li>
+      <li v-show="$store.state.role === 2">
+        <router-link :to="{ name: 'admin' }">店舗管理者画面</router-link>
+      </li>
       <li v-show="!$store.state.auth">
         <router-link :to="{ name: 'login' }">ログイン</router-link>
       </li>

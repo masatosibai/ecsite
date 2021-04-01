@@ -4,6 +4,7 @@
       <div class="title">
         ショップ管理者登録画面
       </div>
+      <h1>{{ $store.state.role }}</h1>
       <div class="nameField">
         <i class="fas fa-user-alt"></i
         ><input type="text" placeholder="お名前" v-model="name" />
@@ -51,10 +52,12 @@ export default {
 
     async registerDatabase() {
       axios
-        .post(process.env.VUE_APP_API_ORIGIN + "/users", {
+        .post(process.env.VUE_APP_API_ORIGIN + "/shopadmin/register", {
           name: this.name,
           email: this.email,
           password: this.password,
+          role: 2,
+          admin: this.$store.state.role,
         })
         .then((response) => {
           console.log(response);
