@@ -71,7 +71,6 @@ export default {
 
 <style scoped>
 .register {
-  position: relative;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -84,7 +83,6 @@ export default {
 }
 .registerwrap {
   width: 25%;
-  height: 230px;
   border: 1px solid black;
 }
 .title {

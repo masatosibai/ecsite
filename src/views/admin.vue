@@ -52,7 +52,7 @@ export default {
 
     async registerDatabase() {
       axios
-        .post(process.env.VUE_APP_API_ORIGIN + "/shopadmin/register", {
+        .post(process.env.VUE_APP_API_ORIGIN + "/admin/registers/shopadmin", {
           name: this.name,
           email: this.email,
           password: this.password,
@@ -63,8 +63,9 @@ export default {
           console.log(response);
           this.$router.replace("/thanks");
         })
-        .catch((error) => {
-          alert(error);
+        .catch((e) => {
+          alert(e.response.data["msg"]);
+          this.$router.push("/");
         });
     },
   },

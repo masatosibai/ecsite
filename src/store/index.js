@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     auth: false,
     userID: -1,
-    role:-1
+    role:2
   },
   mutations: {
   auth(state, payload) {

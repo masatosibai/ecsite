@@ -9,6 +9,7 @@ import done from "../views/done.vue";
 import shops from "../views/shops.vue";
 import admin from "../views/admin.vue";
 import shopadmin from "../views/shopadmin.vue";
+import registerShop from "../views/registerShop.vue";
 
 Vue.use(VueRouter);
 
@@ -55,10 +56,15 @@ const routes = [
     name: "admin",
     component: admin,
   },
-    {
+  {
     path: "/shopadmin",
     name: "shopadmin",
     component: shopadmin,
+  },
+  {
+    path: "/registerShop",
+    name: "registerShop",
+    component: registerShop,
   },
 ];
 

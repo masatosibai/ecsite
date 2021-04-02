@@ -3,7 +3,7 @@
     <div class="cardswarap">
       <h1>店舗情報管理画面</h1>
       <button class="creteBUtton">
-        新規登録する
+        <router-link to="/registerShop"> 新規登録する</router-link>
       </button>
       <div class="cardwrap">
         <div class="card" v-for="(store, index) in storeData" :key="index">
@@ -17,7 +17,7 @@
               <button class="updateBUtton">
                 <router-link
                   v-bind:to="{ name: 'shops', params: { id: store.id } }"
-                  >登録内容を変更する</router-link
+                  >予約と店舗情報を変更する</router-link
                 >
               </button>
             </div>
@@ -25,7 +25,7 @@
               <button class="deleteBUtton">
                 <router-link
                   v-bind:to="{ name: 'shops', params: { id: store.id } }"
-                  >登録内容を削除する</router-link
+                  >店舗情報を削除する</router-link
                 >
               </button>
             </div>
@@ -45,8 +45,20 @@ export default {
     };
   },
   async created() {
-    const data = await axios.get(process.env.VUE_APP_API_ORIGIN + "/shops");
-    this.storeData = data.data;
+    await axios
+      .get(process.env.VUE_APP_API_ORIGIN + "/shopadmin/shops", {
+        headers: {
+          Authorization: this.$store.state.role,
+        },
+      })
+      .then((res) => {
+        this.storeData = res.data;
+      })
+      .catch((e) => {
+        alert(e.response.data["msg"]);
+        this.$router.push("/");
+      });
+    // this.storeData = data.data;
     // console.log(this.selectedArea);
     // console.log(this.selectedGenre);
     // console.log(process.env.VUE_APP_API_ORIGIN);
