@@ -22,11 +22,8 @@
               </button>
             </div>
             <div class="button_icon">
-              <button class="deleteBUtton">
-                <router-link
-                  v-bind:to="{ name: 'shops', params: { id: store.id } }"
-                  >店舗情報を削除する</router-link
-                >
+              <button class="deleteBUtton" @click="deleteShopInfo(store.id)">
+                店舗情報を削除する
               </button>
             </div>
           </div>
@@ -58,12 +55,31 @@ export default {
         alert(e.response.data["msg"]);
         this.$router.push("/");
       });
-    // this.storeData = data.data;
-    // console.log(this.selectedArea);
-    // console.log(this.selectedGenre);
-    // console.log(process.env.VUE_APP_API_ORIGIN);
   },
-  methods: {},
+  methods: {
+    async deleteShopInfo(shopID) {
+      await axios
+        .post(
+          process.env.VUE_APP_API_ORIGIN + "/shopadmin/delete/shop",
+          {
+            shopID: shopID,
+          },
+          {
+            headers: {
+              Authorization: this.$store.state.role,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          alert(res.data["msg"]);
+        })
+        .catch((e) => {
+          alert(e.response.data["msg"]);
+        });
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
@@ -120,6 +136,7 @@ h1 {
   border: none;
   color: white;
   width: 100%;
+  cursor: pointer;
 }
 .creteBUtton {
   background-color: blue;
