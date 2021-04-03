@@ -123,8 +123,6 @@ export default {
         this.user_info = data.data;
         this.user_likes = data.data.likes;
         this.user_reserve = data.data.reservations;
-      } else {
-        // window.location.href = "/login";
       }
     });
 

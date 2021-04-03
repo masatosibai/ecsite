@@ -3,7 +3,7 @@
     <div class="cardswarap">
       <div class="cardwrap">
         <div class="card" v-for="(store, index) in storeData" :key="index">
-          <img alt="Vue logo" :src="store.image_url" class="thumbnailsImage" />
+          <img alt="ショップ画像" :src="store.image_url" class="thumbnailsImage" />
           <div class="sotreName_Location_detailButton">
             <p class="storeName">{{ store.name }}</p>
             <p class="storeLocation_category">

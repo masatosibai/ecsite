@@ -145,9 +145,6 @@ export default {
           description.includes(this.selectedFreeWord)
         );
       }
-      // console.log(filteredArea);
-      // console.log(filteredGenre);
-      // console.log(filterdFreeWord);
       this.storeData = filterdFreeWord;
       this.selectedArea = "ALL Area";
       this.selectedGenre = "ALL Genre";

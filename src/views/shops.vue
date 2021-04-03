@@ -85,7 +85,6 @@ export default {
     },
     reserveTime: function(newVal) {
       this.reserveTime = newVal;
-      // console.log(newVal);
     },
   },
 

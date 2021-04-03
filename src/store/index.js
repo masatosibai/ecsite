@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     auth: false,
     userID: -1,
-    role:2
+    role:-1,
   },
   mutations: {
   auth(state, payload) {
@@ -42,38 +42,14 @@ export default new Vuex.Store({
           }
         }
       ).then((res) => {
-        // console.log(res);
-        // console.log(res.data.auth);
-        // console.log(res.data.id);
         commit("auth", res.data.auth);
         commit("userID", res.data.id);
         commit("role", res.data.role);
       })
-    } else {
-      // window.location.href = "/login";
     }
   });
-      // const responseLogin = await axios.post(
-      //   process.env.VUE_APP_API_ORIGIN + "/login",{
-      //     idtoken}
-      // );
-      // console.log(responseLogin);
-      // commit("auth", true);
-      // // commit("userID", responseLogin.data.id);
-      // router.replace("/");
     },
     logout({ commit }) {
-      // axios
-      //   .post(process.env.VUE_APP_API_ORIGIN+"/logout", {
-      //     auth: this.state.auth,
-      //   })
-      //   .then((response) => {
-      //     console.log(response);
-      //     commit("logout", response.data.auth);
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
       commit("logout", false);
     },
     
