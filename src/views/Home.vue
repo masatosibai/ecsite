@@ -34,7 +34,7 @@
           <div class="cardwrap">
             <div class="card" v-for="(store, index) in storeData" :key="index">
               <img
-                alt="Vue logo"
+                alt="ショップ画像"
                 :src="store.image_url"
                 class="thumbnailsImage"
               />

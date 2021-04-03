@@ -5,7 +5,9 @@
         ご予約ありがとうございます。
       </div>
       <div class="buttonField">
-        <button class="doneBUtton">戻る</button>
+        <button class="doneBUtton">
+          <router-link to="/"> 戻る</router-link>
+        </button>
       </div>
     </div>
   </div>
@@ -43,5 +45,9 @@
   border: none;
   color: white;
   width: 30%;
+}
+.doneBUtton a {
+  color: white;
+  text-decoration: none;
 }
 </style>
