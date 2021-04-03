@@ -16,7 +16,7 @@
             <div class="button_icon">
               <button class="updateBUtton">
                 <router-link
-                  v-bind:to="{ name: 'shops', params: { id: store.id } }"
+                  v-bind:to="{ name: 'updateShop', params: { id: store.id } }"
                   >予約と店舗情報を変更する</router-link
                 >
               </button>

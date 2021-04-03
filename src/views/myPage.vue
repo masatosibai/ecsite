@@ -13,7 +13,7 @@
             :key="shopsIndex"
           >
             <img
-              alt="Vue logo"
+              alt="ショップ画像"
               :src="shops.image_url"
               class="thumbnailsImage"
             />

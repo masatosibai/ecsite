@@ -10,6 +10,7 @@ import shops from "../views/shops.vue";
 import admin from "../views/admin.vue";
 import shopadmin from "../views/shopadmin.vue";
 import registerShop from "../views/registerShop.vue";
+import updateShop from "../views/updateShop.vue";
 
 Vue.use(VueRouter);
 
@@ -65,6 +66,12 @@ const routes = [
     path: "/registerShop",
     name: "registerShop",
     component: registerShop,
+  },
+  {
+    path: "/updateShop/:id",
+    name: "updateShop",
+    component: updateShop,
+    props: true,
   },
 ];
 
