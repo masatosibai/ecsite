@@ -125,7 +125,7 @@ export default {
   methods: {
     async update() {
       await axios
-        .post(
+        .put(
           process.env.VUE_APP_API_ORIGIN + "/shopadmin/update/shop",
           {
             id: this.id,

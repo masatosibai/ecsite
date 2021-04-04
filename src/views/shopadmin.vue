@@ -63,11 +63,8 @@ export default {
   methods: {
     async deleteShopInfo(shopID) {
       await axios
-        .post(
-          process.env.VUE_APP_API_ORIGIN + "/shopadmin/delete/shop",
-          {
-            shopID: shopID,
-          },
+        .delete(
+          process.env.VUE_APP_API_ORIGIN + "/shopadmin/delete/shop"+shopID,
           {
             headers: {
               Authorization: this.$store.state.role,
