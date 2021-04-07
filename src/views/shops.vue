@@ -90,7 +90,7 @@ export default {
 
   async created() {
     const data = await axios.get(
-      process.env.VUE_APP_API_DEVELOP + "/shops/" + this.shop_id
+      process.env.VUE_APP_API_PRODUCTION + "/shops/" + this.shop_id
     );
     this.shop_info = data.data;
     let today = new Date();
@@ -109,15 +109,15 @@ export default {
     async reserveButton() {
       if (this.$store.state.auth) {
         await axios
-          .post(process.env.VUE_APP_API_DEVELOP + "/reservation", {
+          .post(process.env.VUE_APP_API_PRODUCTION + "/reservation", {
             user_id: this.$store.state.userID,
             shop_id: this.shop_id,
             date: this.reserveDate,
             time: this.reserveTime,
             user_num: this.reserveNum,
           })
-          .then((response) => {
-            console.log(response);
+          .then(() => {
+            // console.log(response);
             this.$router.go({
               path: this.$router.currentRoute.path,
               force: true,

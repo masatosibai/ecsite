@@ -112,14 +112,14 @@ export default {
       if (currentUser) {
         const idToken = await currentUser.getIdToken(true);
         const data = await axios.get(
-          process.env.VUE_APP_API_DEVELOP + "/users/" + this.user_id,
+          process.env.VUE_APP_API_PRODUCTION + "/users/" + this.user_id,
           {
             headers: {
               Authorization: idToken,
             },
           }
         );
-        console.log(data);
+        // console.log(data);
         this.user_info = data.data;
         this.user_likes = data.data.likes;
         this.user_reserve = data.data.reservations;
@@ -128,30 +128,31 @@ export default {
   },
   methods: {
     deleteReservation(selectedID) {
-      console.log(selectedID);
       axios
-        .delete(process.env.VUE_APP_API_DEVELOP + "/reservation/" + selectedID)
-        .then((response) => {
-          console.log(response);
+        .delete(
+          process.env.VUE_APP_API_PRODUCTION + "/reservation/" + selectedID
+        )
+        .then(() => {
+          // console.log(response);
           this.$router.go({
             path: this.$router.currentRoute.path,
             force: true,
           });
         })
-        .catch((err) => {
-          console.log("err:", err);
+        .catch(() => {
+          // console.log("err:", err);
         });
     },
     deletFavoritedStore(shopID) {
       axios({
         method: "delete",
-        url: process.env.VUE_APP_API_DEVELOP + "/likes",
+        url: process.env.VUE_APP_API_PRODUCTION + "/likes",
         data: {
           userID: this.user_id,
           shopID: shopID,
         },
-      }).then((response) => {
-        console.log(response);
+      }).then(() => {
+        // console.log(response);
         this.$router.go({
           path: this.$router.currentRoute.path,
           force: true,

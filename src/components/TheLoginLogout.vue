@@ -42,9 +42,9 @@ export default {
           alert("ログアウトしました。");
           this.$store.dispatch("logout");
         })
-        .catch((error) => {
+        .catch(() => {
           // An error happened.
-          console.log(error.message);
+          // console.log(error.message);
         });
       // this.$store.dispatch("logout");
     },

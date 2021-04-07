@@ -52,15 +52,18 @@ export default {
 
     async registerDatabase() {
       axios
-        .post(process.env.VUE_APP_API_DEVELOP + "/admin/registers/shopadmin", {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          role: 2,
-          admin: this.$store.state.role,
-        })
-        .then((response) => {
-          console.log(response);
+        .post(
+          process.env.VUE_APP_API_PRODUCTION + "/admin/registers/shopadmin",
+          {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            role: 2,
+            admin: this.$store.state.role,
+          }
+        )
+        .then(() => {
+          // console.log(response);
           this.$router.replace("/");
         })
         .catch((e) => {
