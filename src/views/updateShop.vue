@@ -104,7 +104,7 @@ export default {
 
   async created() {
     await axios
-      .get(process.env.VUE_APP_API_ORIGIN + "/shopadmin/shops/" + this.id, {
+      .get(process.env.VUE_APP_API_DEVELOP + "/shopadmin/shops/" + this.id, {
         headers: {
           Authorization: this.$store.state.role,
         },
@@ -126,7 +126,7 @@ export default {
     async update() {
       await axios
         .put(
-          process.env.VUE_APP_API_ORIGIN + "/shopadmin/update/shop",
+          process.env.VUE_APP_API_DEVELOP + "/shopadmin/update/shop",
           {
             id: this.id,
             name: this.name,
@@ -153,7 +153,7 @@ export default {
       console.log(selectedID);
       await axios
         .delete(
-          process.env.VUE_APP_API_ORIGIN +
+          process.env.VUE_APP_API_DEVELOP +
             "/shopadmin/delete/reservation/" +
             selectedID,
           {
