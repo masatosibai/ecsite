@@ -1,7 +1,20 @@
 ### 環境
 vue:2.6.12
+
 firebase: 8.3.1,
+
 v-calendar: 2.3.0
+
+
+### 本番環境と開発環境
+
+masterブランチを本番環境
+
+developブランチを開発環境で使用
+開発環境で適宜ブランチを切り開発する
+
+develop→masterへCreate a merge commitで行っている
+
 
 
 ### ページ一覧
