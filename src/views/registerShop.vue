@@ -48,7 +48,8 @@ export default {
     async register() {
       axios
         .post(
-          process.env.VUE_APP_API_DEVELOP + "/shopadmin/register/shop",
+          process.env.VUE_APP_API_DEVELOP_production +
+            "/shopadmin/register/shop",
           {
             name: this.name,
             area: this.area,
