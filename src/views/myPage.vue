@@ -112,7 +112,7 @@ export default {
       if (currentUser) {
         const idToken = await currentUser.getIdToken(true);
         const data = await axios.get(
-          process.env.VUE_APP_API_DEVELOP_production + "/users/" + this.user_id,
+          process.env.VUE_APP_API_PRODUCTION + "/users/" + this.user_id,
           {
             headers: {
               Authorization: idToken,
@@ -131,9 +131,7 @@ export default {
       console.log(selectedID);
       axios
         .delete(
-          process.env.VUE_APP_API_DEVELOP_production +
-            "/reservation/" +
-            selectedID
+          process.env.VUE_APP_API_PRODUCTION + "/reservation/" + selectedID
         )
         .then((response) => {
           console.log(response);
@@ -149,7 +147,7 @@ export default {
     deletFavoritedStore(shopID) {
       axios({
         method: "delete",
-        url: process.env.VUE_APP_API_DEVELOP_production + "/likes",
+        url: process.env.VUE_APP_API_PRODUCTION + "/likes",
         data: {
           userID: this.user_id,
           shopID: shopID,

@@ -51,7 +51,7 @@ export default {
 
     async registerDatabase() {
       axios
-        .post(process.env.VUE_APP_API_DEVELOP_production + "/users", {
+        .post(process.env.VUE_APP_API_PRODUCTION + "/users", {
           name: this.name,
           email: this.email,
           password: this.password,

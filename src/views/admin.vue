@@ -53,8 +53,7 @@ export default {
     async registerDatabase() {
       axios
         .post(
-          process.env.VUE_APP_API_DEVELOP_production +
-            "/admin/registers/shopadmin",
+          process.env.VUE_APP_API_PRODUCTION + "/admin/registers/shopadmin",
           {
             name: this.name,
             email: this.email,

@@ -35,7 +35,7 @@ export default new Vuex.Store({
       // 何らかの認証が必要なリクエストをIDトークン付きで飛ばす
       // console.log(idToken);
        await axios.get(
-       process.env.VUE_APP_API_DEVELOP_production + "/login",
+       process.env.VUE_APP_API_PRODUCTION + "/login",
         {
           headers: {
             Authorization: idToken

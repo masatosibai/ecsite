@@ -47,7 +47,7 @@ export default {
   },
   async created() {
     await axios
-      .get(process.env.VUE_APP_API_DEVELOP_production + "/shopadmin/shops", {
+      .get(process.env.VUE_APP_API_PRODUCTION + "/shopadmin/shops", {
         headers: {
           Authorization: this.$store.state.role,
         },
@@ -64,7 +64,7 @@ export default {
     async deleteShopInfo(shopID) {
       await axios
         .delete(
-          process.env.VUE_APP_API_DEVELOP_production +
+          process.env.VUE_APP_API_PRODUCTION +
             "/shopadmin/delete/shop" +
             shopID,
           {
