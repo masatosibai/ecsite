@@ -15,6 +15,8 @@ developブランチを開発環境で使用
 
 develop→masterへCreate a merge commitで行っている
 
+Branch protection ruleを用いてmasterへの直pushは禁止
+
 
 
 ### ページ一覧
