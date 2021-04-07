@@ -17,7 +17,6 @@ develop→masterへCreate a merge commitで行っている
 
 Branch protection ruleを用いてmasterへの直pushは禁止
 
-### 環境構築方法
 
 ### 環境構築方法
 node.jsをインストール
