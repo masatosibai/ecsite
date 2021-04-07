@@ -116,8 +116,8 @@ export default {
             time: this.reserveTime,
             user_num: this.reserveNum,
           })
-          .then((response) => {
-            console.log(response);
+          .then(() => {
+            // console.log(response);
             this.$router.go({
               path: this.$router.currentRoute.path,
               force: true,

@@ -62,8 +62,8 @@ export default {
             admin: this.$store.state.role,
           }
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           this.$router.replace("/");
         })
         .catch((e) => {

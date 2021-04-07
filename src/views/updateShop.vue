@@ -150,7 +150,6 @@ export default {
         });
     },
     async deleteReservation(selectedID) {
-      console.log(selectedID);
       await axios
         .delete(
           process.env.VUE_APP_API_PRODUCTION +
@@ -163,7 +162,7 @@ export default {
           }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           alert(res.date.msg);
           this.$router.go({
             path: this.$router.currentRoute.path,

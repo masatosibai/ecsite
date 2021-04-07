@@ -74,7 +74,7 @@ export default {
           }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           alert(res.data["msg"]);
         })
         .catch((e) => {

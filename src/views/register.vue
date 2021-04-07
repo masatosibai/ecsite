@@ -57,8 +57,8 @@ export default {
           password: this.password,
           role: 3,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           this.$router.replace("/thanks");
         })
         .catch((error) => {
